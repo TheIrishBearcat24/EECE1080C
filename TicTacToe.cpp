@@ -11,7 +11,7 @@ class TicTacToe {
 
     string ticTacToe[3][3];
 
-    int main() {
-        return 0;
-    }
+    //TO DO
+    //How would we implement a randomizational tool for the placement of the opponent's placement?
+    //How would we check for winning and losing?
 };
