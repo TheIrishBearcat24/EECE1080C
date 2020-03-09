@@ -16,4 +16,16 @@ class TicTacToe {
     //How would we implement a randomizational tool for the placement of the opponent's placement?
     //How would we check for winning and losing?
     //Going to need a do while loop to check for playing again
+
+    int main() {
+        cout << "Do again? (Y/N): " << endl;
+        cin >> playAgain;
+        do {
+            cout << "Hi ";
+        }
+    
+        while (playAgain == 'Y');
+
+        return 0;
+    }
 };
