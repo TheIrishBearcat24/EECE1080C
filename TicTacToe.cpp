@@ -4,8 +4,6 @@
 
 using namespace std;
 
-class TicTacToe {
-
     char x = 'X';
     char o = 'O';
     char playAgain = 'Y';
@@ -17,20 +15,19 @@ class TicTacToe {
     //How would we check for winning and losing?
     //Going to need a do while loop to check for playing again
 
-    void hello() {
-        cout << "Do again? (Y/N): " << endl;
-        cin >> playAgain;
-        do {
-            cout << "Hi ";
+    void ticTacToeBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                cout << ticTacToe[i][j] << " ";
+            }
+
+            cout << endl;
         }
-    
-        while (playAgain == 'Y');
     }
 
     int main() {
         
-        hello();
+        ticTacToeBoard();
 
         return 0;
     }
-};
