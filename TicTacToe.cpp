@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 //going to need to include vector library and maybe stdlib?
 
 using namespace std;
@@ -26,6 +28,8 @@ using namespace std;
     }
 
     int main() {
+
+        srand(time(0));
         
         ticTacToeBoard();
 
