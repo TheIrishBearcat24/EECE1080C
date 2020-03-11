@@ -13,11 +13,12 @@ using namespace std;
     char ticTacToe[3][3] = {{'-','-','-'},{'-','-','-'},{'-','-','-'}}; //put this inside the do while loop
     
     //TO DO
-    //How would we implement a randomizational tool for the placement of the opponent's placement?
-    //How would we check for winning and losing?
-    //Going to need a do while loop to check for playing again
-
-    //making sure owen can commit
+    //Make array of user inputs and computer inputs
+    //cout computer user and computer inputs
+    //After each input, the other player needs to make a move
+    //Computer always goes first
+    //Need to make it that computer almost always wins
+    //Machine learning aspect
 
     void ticTacToeBoard() {
         do {
@@ -37,9 +38,11 @@ using namespace std;
         while (playAgain == 'y' || playAgain == 'Y');
     }
 
-    int main() {
+    void computeMoves() {
+        char firstMove = rand() % 3;
+    }
 
-        srand(time(0));
+    int main() {
         
         ticTacToeBoard();
 
