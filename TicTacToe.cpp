@@ -18,13 +18,21 @@ using namespace std;
     //Going to need a do while loop to check for playing again
 
     void ticTacToeBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                cout << ticTacToe[i][j] << " ";
+        do {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    cout << ticTacToe[i][j] << " ";
+                }
+
+                cout << endl;
             }
 
-            cout << endl;
+            cout << "Want to play again? (Y/N): ";
+
+            cin >> playAgain;
         }
+
+        while (playAgain == 'y' || playAgain == 'Y');
     }
 
     int main() {
