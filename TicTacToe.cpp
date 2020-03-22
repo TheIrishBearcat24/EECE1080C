@@ -49,7 +49,7 @@ void userChoice() {
     int row, col;
 
     again: // acts as a do-while loop
-    cout << "Choose row for user: (0, 1, 2): " << endl;
+    cout << "Choose row for user (0, 1, 2): " << endl;
     cin >> row;
     cout << "Choose column for user (0, 1, 2): " << endl;
     cin >> col;
@@ -132,10 +132,36 @@ bool checkForWin() {
     if (hasWon == true) {
         if (userWonFlag == 1) {
             cout << "You won!" << endl;
+            cout << "Play again? " << endl;
+
+            cin >> playAgain;
+
+            if (playAgain == 1) {
+                computerChoice();
+                userChoice();
+                checkForWin();
+            }
+
+            else {
+                cout << "Thanks for playing!" << endl;
+            }
         }
 
         if (userWonFlag == -1) {
             cout << "Computer won!" << endl;
+            cout << "Play again? " << endl;
+
+            cin >> playAgain;
+
+            if (playAgain == 1) {
+                computerChoice();
+                userChoice();
+                checkForWin();
+            }
+
+            else {
+                cout << "Thanks for playing!" << endl;
+            }
         }
     }
 
