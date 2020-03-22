@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <array>
 
 using namespace std;
 
@@ -9,20 +8,12 @@ char x = 'X';
 char o = 'O';
 char playAgain = 'Y';
 
-char ticTacToe[3][3] = {{'-','-','-'},{'-','-','-'},{'-','-','-'}}; //put this inside the do while loop
-
-//TO DO
-//Make array of user inputs and computer inputs
-//cout computer user and computer inputs
-//After each input, the other player needs to make a move
-//Computer always goes first
-//Need to make it that computer almost always wins
-//Machine learning aspect
+char ticTacToe[3][3] = {{'-','-','-'},{'-','-','-'},{'-','-','-'}}; // sets up the board
 
 void ticTacToeBoard() {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << ticTacToe[i][j] << " ";
+            cout << ticTacToe[i][j] << " "; // creates a 3x3 board
         }
 
         cout << endl;
@@ -38,7 +29,7 @@ void computerChoice() {
 
     while (checker == true) {
         if (ticTacToe[i / 4][int (i % 4)] == '-') { // uses an iterator to check if the next space is an empty slot
-            ticTacToe[i / 4][int (i % 4)] = x;
+            ticTacToe[i / 4][int (i % 4)] = x; // acts as a random number generator for choosing computer's decision
             checker = false;
         }
 
@@ -58,7 +49,7 @@ void userChoice() {
     cin >> col;
     cout << endl;
 
-    if (ticTacToe[col][row] == x || ticTacToe[col][row] == o) {
+    if (ticTacToe[row][col] == x || ticTacToe[row][col] == o) {
         cout << "Slot already taken. Please try again." << endl;
         goto again;
     }
@@ -75,6 +66,7 @@ bool checkForWin() {
     int userWonFlag = 0;
     int playAgain;
 
+    // all of the logic for checking the winning conditions
     for (int i = 0; i < 3; i++) {
         if (ticTacToe[0][i] == o && ticTacToe[1][i] == o && ticTacToe[2][i] == o) {
             hasWon = true;
@@ -133,13 +125,11 @@ bool checkForWin() {
 
     if (hasWon == true) {
         if (userWonFlag == 1) {
-            cout << "You won! Play again? " << endl;
-            cin >> playAgain;
+            cout << "You won!" << endl;
         }
 
         if (userWonFlag == -1) {
-            cout << "Computer won! Play again? " << endl;
-            cin >> playAgain;
+            cout << "Computer won!" << endl;
         }
     }
 
