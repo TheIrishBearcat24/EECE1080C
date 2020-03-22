@@ -1,3 +1,9 @@
+/**
+ * 
+ * By: Owen Porpora and Cameron Clarke
+ * 
+ * */
+
 #include <iostream>
 #include <iomanip>
 #include <string>
