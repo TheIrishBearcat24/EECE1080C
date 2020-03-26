@@ -7,12 +7,15 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
+void runGame();
+
 char x = 'X';
 char o = 'O';
-char playAgain = 'Y';
 
 char ticTacToe[3][3] = {{'-','-','-'},{'-','-','-'},{'-','-','-'}}; // sets up the board
 
@@ -70,7 +73,6 @@ void userChoice() {
 bool checkForWin() {
     bool hasWon = false;
     int userWonFlag = 0;
-    int playAgain;
 
     // all of the logic for checking the winning conditions
     for (int i = 0; i < 3; i++) {
@@ -129,54 +131,77 @@ bool checkForWin() {
         }
     }
 
-    if (hasWon == true) {
-        if (userWonFlag == 1) {
+    return true;
+}
+
+void playAgainChecker(bool winner, char winningPiece, char & yesNo) {
+    if (winner) {
+        // this all displays the conditions and lets user say yes or no for going again
+        if (winningPiece == '0') {
             cout << "You won!" << endl;
-            cout << "Play again? " << endl;
+            cout << "Play again? (Y/N)" << endl;
+            cin >> yesNo;
+        }
 
-            cin >> playAgain;
+        else if (winningPiece == 'X') {
+            cout << "You lose!" << endl;
+            cout << "Play again? (Y/N)" << endl;
+            cin >> yesNo;
+        }
 
-            if (playAgain == 1) {
-                computerChoice();
-                userChoice();
-                checkForWin();
-            }
+        else {
+            cout << "Tie!" << endl;
+            cout << "Play again? (Y/N)" << endl;
+            cin >> yesNo;
+        }
 
-            else {
-                cout << "Thanks for playing!" << endl;
+        if (yesNo == 'Y' || yesNo == 'y') {
+            winner = false;
+            winningPiece = ' ';
+
+            for (int i = 0; i < 3; i++) {
+                ticTacToe[i][0] = '-';
+                ticTacToe[i][1] = '-';
+                ticTacToe[i][2] = '-';
             }
         }
 
-        if (userWonFlag == -1) {
-            cout << "Computer won!" << endl;
-            cout << "Play again? " << endl;
-
-            cin >> playAgain;
-
-            if (playAgain == 1) {
-                computerChoice();
-                userChoice();
-                checkForWin();
-            }
-
-            else {
-                cout << "Thanks for playing!" << endl;
-            }
+        else {
+            cout << "Thanks for playing!" << endl;
         }
     }
+}
 
-    return true;
+void runGame(char & yesNo) {
+
+    bool isWinner = false;
+    char winningPiece = ' ';
+
+    while (!isWinner) {
+        computerChoice();
+        checkForWin();
+
+        if (isWinner) {
+            break;
+        }
+
+        userChoice();
+        ticTacToeBoard();
+        checkForWin();
+    }
+
+    playAgainChecker(isWinner, winningPiece, yesNo);
+
 }
 
 int main() {
     
-    bool runGame = true;
+    char yesNo = 'Y';
+    unsigned randomSeed = time(0);
+    srand(randomSeed);
 
-    while (runGame == true) {
-        computerChoice();
-        runGame = checkForWin();
-        userChoice();
-        runGame = checkForWin();
+    while (yesNo == 'Y') {
+        runGame(yesNo);
     }
 
     return 0;
